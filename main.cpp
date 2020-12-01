@@ -12,15 +12,10 @@ struct List {
 void PushFront (List **begin, const int &item){
     
     List *newitem = new List;
+
     newitem->id = item;
-    
-    // if (begin == nullptr){
-    //    newitem->next = nullptr;
-    //}
-    
     newitem->next = *begin;
     *begin = newitem;
-    
 
 }
 
@@ -31,6 +26,7 @@ void PushBack (List **begin, const int &item){
         List *newitem1 = new List;
         newitem1->id = item;
         newitem1->next = *begin;
+        *begin = newitem1;
         
         return;
     }
