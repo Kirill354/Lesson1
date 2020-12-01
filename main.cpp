@@ -104,8 +104,8 @@ void DeleteZad( List **b, const int &item ){
     if (*b == nullptr){
         return;
     }
-    /*
-    if (b->next == nullptr){
+    
+    if ((*b)->next == nullptr){
     
         List *p = *b;
         *b = p->next;
@@ -113,7 +113,7 @@ void DeleteZad( List **b, const int &item ){
         
         return;
     }
-    */
+    
     List *temp = *b;
     List *temp1 = *b;
 
