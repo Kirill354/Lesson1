@@ -77,6 +77,11 @@ void DeleteBack (List **b){
     if (*b == nullptr){
         return;
     }
+
+    if ((*b)->next == nullptr){
+        DeleteFront(b);
+        return;
+    }
     
     List *p = *b;
     List *temp;
