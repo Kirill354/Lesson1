@@ -118,7 +118,8 @@ void DeleteZad( List **b, const int &item ){
         
         return;
     }
-    
+
+    List *temp0 = *b;
     List *temp = *b;
     List *temp1 = *b;
 
@@ -130,7 +131,7 @@ void DeleteZad( List **b, const int &item ){
     }
     
     temp1->next = temp->next;
-    *b = temp1;
+    *b = temp0;
     delete temp;
 
 }
