@@ -25,6 +25,15 @@ void PushFront (List **begin, const int &item){
 }
 
 void PushBack (List **begin, const int &item){
+
+    if (*begin == nullptr){
+        
+        List *newitem1 = new List;
+        newitem1->id = item;
+        newitem1->next = *begin;
+        
+        return;
+    }
     
     List *p = *begin;
     
