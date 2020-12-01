@@ -36,6 +36,8 @@ void PushBack (List **begin, const int &item){
         
         if (p->next == nullptr){
             p->next = newitem;
+            newitem->id = item;
+            newitem->next = nullptr;
             break;
         }
         
@@ -66,14 +68,17 @@ void DeleteBack (List **b){
     }
     
     List *p = *b;
+    List *temp;
     
     while(p->next != nullptr){
         
+        temp = p;
         p = p->next;
         
     }
     
-    delete p; // почему выводит 0 вместо пустоты
+    delete p;// почему выводит 0 вместо пустоты
+    temp->next = nullptr;
     
 }
 
@@ -136,10 +141,17 @@ void Free(List **b){
 }
 
 void menu(){
+    
     cout<<"Какое действие вы хотите сделать?"<<endl;
-    cout<<"0-выйти из меню;  1-печать списка; 3-вставить элемент в начало (4-в конец)"<<endl;
-    cout<<"5-удалить первый элемент (6-последний,7-заданный)"<<endl;
+    cout<<"0-выйти из меню"<<endl;
+    cout<<"1-печать списка"<<endl;
+    cout<<"3-вставить элемент в начало"<<endl;
+    cout<<"4-вставить элемент в конец"<<endl;
+    cout<<"5-удалить первый элемент"<<endl;
+    cout<<"6-удалить последний элемент"<<endl;
+    cout<<"7-удалить заданный элемент"<<endl;
     cout<<"8-удалить весь список"<<endl;
+
 }
 
 int main()
