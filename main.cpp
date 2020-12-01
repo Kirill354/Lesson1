@@ -13,11 +13,6 @@ void PushFront (List **begin, const int &item){
     
     List *newitem = new List;
     newitem->id = item;
-    
-    // if (begin == nullptr){
-    //    newitem->next = nullptr;
-    //}
-    
     newitem->next = *begin;
     *begin = newitem;
     
@@ -93,7 +88,7 @@ void DeleteBack (List **b){
         
     }
     
-    delete p;// почему выводит 0 вместо пустоты
+    delete p;
     temp->next = nullptr;
     
 }
