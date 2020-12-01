@@ -12,15 +12,20 @@ struct List {
 void PushFront (List **begin, const int &item){
     
     List *newitem = new List;
-
     newitem->id = item;
+    
+    // if (begin == nullptr){
+    //    newitem->next = nullptr;
+    //}
+    
     newitem->next = *begin;
     *begin = newitem;
+    
 
 }
 
 void PushBack (List **begin, const int &item){
-
+    
     if (*begin == nullptr){
         
         List *newitem1 = new List;
@@ -36,6 +41,7 @@ void PushBack (List **begin, const int &item){
     List *newitem = new List;
     newitem->id = item;
     newitem->next = nullptr;
+
     
     while(1){
         
@@ -87,34 +93,53 @@ void DeleteBack (List **b){
     
 }
 
-/*
-void DeleteEl( List **b, const int &item ){// не доделал
+void DeleteZad( List **b, const int &item ){
+
+
+    if (item == 1){
+        DeleteFront(b);
+        return;
+    }
     
     if (*b == nullptr){
         return;
     }
+    /*
+    if (b->next == nullptr){
     
-    List *p = *b;
-    
-    if ( p.id == item){
+        List *p = *b;
+        *b = p->next;
+        delete p;
         
-        DeleteFront(&begin);
         return;
     }
+    */
+    List *temp = *b;
+    List *temp1 = *b;
+
+    for (int i = 0; i<item-1; i++){
+        
+        temp1 = temp;
+        temp  = temp->next;
     
-    while ( p.id != item ){
-        
-        p = p->next;
-        
-        if( *p == nullptr){
-            return;
-        }
-        
     }
     
-    
+    temp1->next = temp->next;
+    *b = temp1;
+    delete temp;
+
 }
-*/
+
+void PrintSize(List *b){
+    int size = 0;
+    List *p = b;
+    while (p != nullptr){
+        size++;
+        p = p->next;
+    }
+    
+    cout<<"размер списка = "<<size<<endl<<endl;
+}
 
 void Print(List *b){
     List *temp = b;
@@ -156,6 +181,7 @@ void menu(){
     cout<<"6-удалить последний элемент"<<endl;
     cout<<"7-удалить заданный элемент"<<endl;
     cout<<"8-удалить весь список"<<endl;
+    cout<<"9-узнать размер списка"<<endl;
     cout<<endl;
 
 }
@@ -197,15 +223,21 @@ int main()
             case '6':
                 DeleteBack(&begin);
                 break;
-             case '8':
+            case '7':
+                cout<<"Введите элемент: ";
+                int p; cin>>p;
+                DeleteZad(&begin, p);
+                break;
+            case '8':
                 Free(&begin);
+                break;
+            case '9':
+                PrintSize(begin);
                 break;
         }
 
         
     } while (n !='0');
-    
-
 
     return 0;
 
